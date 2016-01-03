@@ -1,4 +1,4 @@
-# OpenWeatherMap-API-CSharp - OpenWeatherMapAPI C# Library
+# OpenWeatherMap-API - C# Library
 ### Overview
 This library takes what openweathermap api returns in JSON, and converts it to C# objects for easy interaction with in C# projects.  It supports (most/all) of the returned data the API returns in JSON. The JSON api returned properties are sometimes present, and sometimes not.  I have done my best to detect properties that are prone to not being presented, and assigning those values null.  You should check certain properties for null vals before assigning under the assumption they are good values.  It is also possible I missed values, and the C# library may nullref.
 
@@ -46,9 +46,9 @@ This library takes what openweathermap api returns in JSON, and converts it to C
 - directionEnumToString(DirectionEnum dir) - Returns string value of wind direction on the basis of passed in DirectionEnum
 
 ### Example Usage
-OpenWeatherAPI.OpenWeatherAPI openWeatherAPI = new OpenWeatherAPI.OpenWeatherAPI("my open weather api key");
-OpenWeatherAPI.Query query = openWeatherAPI.query("city/location query");
-Console.WriteLine(string.Format("The temperature in {0}, {1} is currently {2} °F", query.Name,query.Sys.Country, query.Main.Temperature.FahrenheitCurrent));
+- OpenWeatherAPI.OpenWeatherAPI openWeatherAPI = new OpenWeatherAPI.OpenWeatherAPI("my open weather api key");
+- OpenWeatherAPI.Query query = openWeatherAPI.query("city/location query");
+- Console.WriteLine(string.Format("The temperature in {0}, {1} is currently {2} °F", query.Name,query.Sys.Country, query.Main.Temperature.FahrenheitCurrent));
 
 ### Credits and Libraries Utilized
 - Costura.Fody / Fody - Takes the projects various DLL files and packages them all in the TwitchLib.dll file, combing and removing potential problems with not having all parts
