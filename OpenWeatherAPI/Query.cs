@@ -17,6 +17,7 @@ namespace OpenWeatherAPI
         private double visibility;
         private Wind wind;
         private Rain rain;
+        private Snow snow;
         private Clouds clouds;
         private Sys sys;
         private int id;
@@ -31,6 +32,7 @@ namespace OpenWeatherAPI
         public double Visibility { get { return visibility; } }
         public Wind Wind { get { return wind; } }
         public Rain Rain { get { return rain; } }
+        public Snow Snow { get { return snow; } }
         public Clouds Clouds { get { return clouds; } }
         public Sys Sys { get { return sys; } }
         public int ID { get { return id; } }
@@ -53,6 +55,8 @@ namespace OpenWeatherAPI
                 wind = new Wind(jsonData.SelectToken("wind"));
                 if(jsonData.SelectToken("raid") != null)
                     rain = new Rain(jsonData.SelectToken("rain"));
+                if (jsonData.SelectToken("snow") != null)
+                    snow = new Snow(jsonData.SelectToken("snow"));
                 clouds = new Clouds(jsonData.SelectToken("clouds"));
                 sys = new Sys(jsonData.SelectToken("sys"));
                 id = int.Parse(jsonData.SelectToken("id").ToString());

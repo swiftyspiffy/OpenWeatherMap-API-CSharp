@@ -1,6 +1,6 @@
 # OpenWeatherMap-API - C# Library
 ### Overview
-This library takes what openweathermap api returns in JSON, and converts it to C# objects for easy interaction with in C# projects.  It supports (most/all) of the returned data the API returns in JSON. The JSON api returned properties are sometimes present, and sometimes not.  I have done my best to detect properties that are prone to not being presented, and assigning those values null.  You should check certain properties for null vals before assigning under the assumption they are good values.  It is also possible I missed values, and the C# library may nullref.
+This library takes what openweathermap api returns in JSON, and converts it to C# objects for easy interaction with in C# projects.  It supports (most/all) of the returned data the API returns in JSON. The JSON api returned properties are sometimes present, and sometimes not.  I have done my best to detect properties that are prone to not being presented, and assigning those values null.  You should check certain properties for null vals before assigning under the assumption they are good values.  It is also possible I missed values, and the C# library may nullref.  This project was originally created to be used in a Twitch chat bot, but has been released for others to use.
 
 ### Returned Data
 - Clouds
@@ -19,9 +19,9 @@ This library takes what openweathermap api returns in JSON, and converts it to C
   * KelvinMinimum - Returns raw openweather API values for minimum temperature in Kelvin
   * KelvinMaximum - Returns raw openweather API values for maximum temperatures in Kelvin
 - Rain
-  * 1h - Returns rain related data for the last hour at query location.
-  * 3h - Returns rain related data for the last 3 hours at query location.
-  * 5h - Returns rain related data for the last 5 hours at query location.
+  * 3h - Returns rain related data for the last 3 hours at query location (if available).
+- Snow
+  * 3h - Returns snow related data for the last 3 hours at query location (if available).
 - Sys
   * Type - System related parameter, avoid usage
   * ID - Openweather API city identification int

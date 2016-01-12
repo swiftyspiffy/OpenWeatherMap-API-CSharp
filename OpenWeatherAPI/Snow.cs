@@ -7,16 +7,15 @@ using Newtonsoft.Json.Linq;
 
 namespace OpenWeatherAPI
 {
-    public class Rain
+    public class Snow
     {
         private double h3;
 
         public double H3 { get { return h3; } }
-
-        public Rain(JToken rainData)
+        public Snow(JToken snowData)
         {
-            if (rainData.SelectToken("3h") != null)
-                h3 = double.Parse(rainData.SelectToken("3h").ToString());
+            if (snowData.SelectToken("3h") != null)
+                h3 = double.Parse(snowData.SelectToken("3h").ToString());
         }
     }
 }
