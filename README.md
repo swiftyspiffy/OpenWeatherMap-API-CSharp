@@ -18,6 +18,8 @@ This library takes what openweathermap api returns in JSON, and converts it to C
   * FahrenheitMaximum - Returns converted Kelvin values of maximum temperature in Fahrenheight
   * KelvinMinimum - Returns raw openweather API values for minimum temperature in Kelvin
   * KelvinMaximum - Returns raw openweather API values for maximum temperatures in Kelvin
+  * SeaLevel - Returns atmospheric pressure on sea level, hPa, raw from openweather API
+  * GroundLevel - Returns atmospheric pressure on ground level, hPa, raw from openweather API
 - Rain
   * 3h - Returns rain related data for the last 3 hours at query location (if available).
 - Snow
