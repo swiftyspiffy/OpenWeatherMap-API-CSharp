@@ -23,9 +23,9 @@ namespace OpenWeatherAPI
 
         public Sys(JToken sysData)
         {
-            if(sysData.SelectToken("type") != null)
+            if (sysData.SelectToken("type") != null)
                 type = int.Parse(sysData.SelectToken("type").ToString());
-            if(sysData.SelectToken("id") != null)
+            if (sysData.SelectToken("id") != null)
                 id = int.Parse(sysData.SelectToken("id").ToString());
             message = double.Parse(sysData.SelectToken("message").ToString());
             country = sysData.SelectToken("country").ToString();
