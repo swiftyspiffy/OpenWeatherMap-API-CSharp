@@ -9,15 +9,13 @@ namespace OpenWeatherAPI
 {
     public class Coord
     {
-        private double lon, lat;
-
-        public double Longitude { get { return lon; } }
-        public double Latitude { get { return lat; } }
+        public double Longitude { get; private set; }
+        public double Latitude { get; private set; }
 
         public Coord(JToken coordData)
         {
-            lon = double.Parse(coordData.SelectToken("lon").ToString());
-            lat = double.Parse(coordData.SelectToken("lat").ToString());
+            Longitude = double.Parse(coordData.SelectToken("lon").ToString());
+            Latitude = double.Parse(coordData.SelectToken("lat").ToString());
         }
     }
 }
