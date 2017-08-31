@@ -46,13 +46,13 @@ namespace OpenWeatherAPI
             speed = double.Parse(windData.SelectToken("speed").ToString());
             degree = double.Parse(windData.SelectToken("deg").ToString());
             direction = assignDirection(degree);
-            if(windData.SelectToken("gust") != null)
+            if (windData.SelectToken("gust") != null)
                 gust = double.Parse(windData.SelectToken("gust").ToString());
         }
 
         public string directionEnumToString(DirectionEnum dir)
         {
-            switch(dir)
+            switch (dir)
             {
                 case DirectionEnum.East:
                     return "East";

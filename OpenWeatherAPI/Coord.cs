@@ -10,7 +10,7 @@ namespace OpenWeatherAPI
     public class Coord
     {
         private double lon, lat;
-        
+
         public double Longitude { get { return lon; } }
         public double Latitude { get { return lat; } }
 
