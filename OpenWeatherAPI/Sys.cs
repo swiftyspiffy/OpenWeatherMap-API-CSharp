@@ -9,6 +9,13 @@ namespace OpenWeatherAPI
 {
     public class Sys
     {
+        private const string TypeSelector = "type";
+        private const string IdSelector = "id";
+        private const string MessageSelector = "message";
+        private const string CountrySelector = "country";
+        private const string SunriseSelector = "sunrise";
+        private const string SunsetSelector = "sunset";
+
         public int Type { get; private set; }
         public int ID { get; private set; }
         public double Message { get; private set; }
@@ -18,14 +25,16 @@ namespace OpenWeatherAPI
 
         public Sys(JToken sysData)
         {
-            if (sysData.SelectToken("type") != null)
-                Type = int.Parse(sysData.SelectToken("type").ToString());
-            if (sysData.SelectToken("id") != null)
-                ID = int.Parse(sysData.SelectToken("id").ToString());
-            Message = double.Parse(sysData.SelectToken("message").ToString());
-            Country = sysData.SelectToken("country").ToString();
-            Sunrise = convertUnixToDateTime(double.Parse(sysData.SelectToken("sunrise").ToString()));
-            Sunset = convertUnixToDateTime(double.Parse(sysData.SelectToken("sunset").ToString()));
+            if (sysData.SelectToken(TypeSelector) != null)
+                Type = int.Parse(sysData.SelectToken(TypeSelector).ToString());
+
+            if (sysData.SelectToken(IdSelector) != null)
+                ID = int.Parse(sysData.SelectToken(IdSelector).ToString());
+
+            Message = double.Parse(sysData.SelectToken(MessageSelector).ToString());
+            Country = sysData.SelectToken(CountrySelector).ToString();
+            Sunrise = convertUnixToDateTime(double.Parse(sysData.SelectToken(SunriseSelector).ToString()));
+            Sunset = convertUnixToDateTime(double.Parse(sysData.SelectToken(SunsetSelector).ToString()));
         }
 
         private DateTime convertUnixToDateTime(double unixTime)

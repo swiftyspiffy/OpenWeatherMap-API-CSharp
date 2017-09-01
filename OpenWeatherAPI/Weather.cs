@@ -9,6 +9,11 @@ namespace OpenWeatherAPI
 {
     public class Weather
     {
+        private const string IdSelector = "id";
+        private const string MainSelector = "main";
+        private const string DescriptionSelector = "description";
+        private const string IconSelector = "icon";
+
         public int ID { get; private set; }
         public string Main { get; private set; }
         public string Description { get; private set; }
@@ -16,10 +21,10 @@ namespace OpenWeatherAPI
 
         public Weather(JToken weatherData)
         {
-            ID = int.Parse(weatherData.SelectToken("id").ToString());
-            Main = weatherData.SelectToken("main").ToString();
-            Description = weatherData.SelectToken("description").ToString();
-            Icon = weatherData.SelectToken("icon").ToString();
+            ID = int.Parse(weatherData.SelectToken(IdSelector).ToString());
+            Main = weatherData.SelectToken(MainSelector).ToString();
+            Description = weatherData.SelectToken(DescriptionSelector).ToString();
+            Icon = weatherData.SelectToken(IconSelector).ToString();
         }
     }
 }
