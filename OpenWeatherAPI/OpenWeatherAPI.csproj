@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DirectionEnum.cs" />
     <Compile Include="OpenWeatherAPI.cs" />
     <Compile Include="Query.cs" />
     <Compile Include="Clouds.cs" />

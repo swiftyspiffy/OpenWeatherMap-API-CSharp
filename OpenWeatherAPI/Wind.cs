@@ -9,45 +9,19 @@ namespace OpenWeatherAPI
 {
     public class Wind
     {
-        public enum DirectionEnum
-        {
-            North,
-            North_North_East,
-            North_East,
-            East_North_East,
-            East,
-            East_South_East,
-            South_East,
-            South_South_East,
-            South,
-            South_South_West,
-            South_West,
-            West_South_West,
-            West,
-            West_North_West,
-            North_West,
-            North_North_West,
-            Unknown
-        }
-
-        private double speed;
-        private DirectionEnum direction;
-        private double degree;
-        private double gust;
-
-        public double SpeedMetersPerSecond { get { return speed; } }
-        public double SpeedFeetPerSecond { get { return speed * 3.28084; } }
-        public DirectionEnum Direction { get { return direction; } }
-        public double Degree { get { return degree; } }
-        public double Gust { get { return gust; } }
+        public double SpeedMetersPerSecond { get; private set; }
+        public double SpeedFeetPerSecond { get { return SpeedMetersPerSecond * 3.28084; } }
+        public DirectionEnum Direction { get; private set; }
+        public double Degree { get; private set; }
+        public double Gust { get; private set; }
 
         public Wind(JToken windData)
         {
-            speed = double.Parse(windData.SelectToken("speed").ToString());
-            degree = double.Parse(windData.SelectToken("deg").ToString());
-            direction = assignDirection(degree);
+            SpeedMetersPerSecond = double.Parse(windData.SelectToken("speed").ToString());
+            Degree = double.Parse(windData.SelectToken("deg").ToString());
+            Direction = assignDirection(Degree);
             if (windData.SelectToken("gust") != null)
-                gust = double.Parse(windData.SelectToken("gust").ToString());
+                Gust = double.Parse(windData.SelectToken("gust").ToString());
         }
 
         public string directionEnumToString(DirectionEnum dir)

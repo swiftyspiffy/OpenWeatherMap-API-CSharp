@@ -9,20 +9,17 @@ namespace OpenWeatherAPI
 {
     public class Weather
     {
-        private int id;
-        private string main, description, icon;
-
-        public int ID { get { return id; } }
-        public string Main { get { return main; } }
-        public string Description { get { return description; } }
-        public string Icon { get { return icon; } }
+        public int ID { get; private set; }
+        public string Main { get; private set; }
+        public string Description { get; private set; }
+        public string Icon { get; private set; }
 
         public Weather(JToken weatherData)
         {
-            id = int.Parse(weatherData.SelectToken("id").ToString());
-            main = weatherData.SelectToken("main").ToString();
-            description = weatherData.SelectToken("description").ToString();
-            icon = weatherData.SelectToken("icon").ToString();
+            ID = int.Parse(weatherData.SelectToken("id").ToString());
+            Main = weatherData.SelectToken("main").ToString();
+            Description = weatherData.SelectToken("description").ToString();
+            Icon = weatherData.SelectToken("icon").ToString();
         }
     }
 }

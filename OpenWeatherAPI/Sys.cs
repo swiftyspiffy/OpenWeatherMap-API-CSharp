@@ -9,28 +9,23 @@ namespace OpenWeatherAPI
 {
     public class Sys
     {
-        private int type, id;
-        private double message;
-        private string country;
-        private DateTime sunrise, sunset;
-
-        public int Type { get { return type; } }
-        public int ID { get { return id; } }
-        public double Message { get { return message; } }
-        public string Country { get { return country; } }
-        public DateTime Sunrise { get { return sunrise; } }
-        public DateTime Sunset { get { return sunset; } }
+        public int Type { get; private set; }
+        public int ID { get; private set; }
+        public double Message { get; private set; }
+        public string Country { get; private set; }
+        public DateTime Sunrise { get; private set; }
+        public DateTime Sunset { get; private set; }
 
         public Sys(JToken sysData)
         {
             if (sysData.SelectToken("type") != null)
-                type = int.Parse(sysData.SelectToken("type").ToString());
+                Type = int.Parse(sysData.SelectToken("type").ToString());
             if (sysData.SelectToken("id") != null)
-                id = int.Parse(sysData.SelectToken("id").ToString());
-            message = double.Parse(sysData.SelectToken("message").ToString());
-            country = sysData.SelectToken("country").ToString();
-            sunrise = convertUnixToDateTime(double.Parse(sysData.SelectToken("sunrise").ToString()));
-            sunset = convertUnixToDateTime(double.Parse(sysData.SelectToken("sunset").ToString()));
+                ID = int.Parse(sysData.SelectToken("id").ToString());
+            Message = double.Parse(sysData.SelectToken("message").ToString());
+            Country = sysData.SelectToken("country").ToString();
+            Sunrise = convertUnixToDateTime(double.Parse(sysData.SelectToken("sunrise").ToString()));
+            Sunset = convertUnixToDateTime(double.Parse(sysData.SelectToken("sunset").ToString()));
         }
 
         private DateTime convertUnixToDateTime(double unixTime)

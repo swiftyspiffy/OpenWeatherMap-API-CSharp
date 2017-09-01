@@ -9,14 +9,14 @@ namespace OpenWeatherAPI
 {
     public class Rain
     {
-        private double h3;
+        private const string ThreeHour = "3h";
 
-        public double H3 { get { return h3; } }
+        public double H3 { get; private set; }
 
         public Rain(JToken rainData)
         {
-            if (rainData.SelectToken("3h") != null)
-                h3 = double.Parse(rainData.SelectToken("3h").ToString());
+            if (rainData.SelectToken(ThreeHour) != null)
+                H3 = double.Parse(rainData.SelectToken(ThreeHour).ToString());
         }
     }
 }
