@@ -9,26 +9,58 @@ namespace OpenWeatherAPI
     public class Temperature
     {
         private double current_kel_temp, temp_kel_min, temp_kel_max;
-        private double current_cel_temp, temp_cel_min, temp_cel_max;
 
-        public double CelsiusCurrent { get { return current_cel_temp; } }
-        public double FahrenheitCurrent { get { return convertToFahrenheit(current_cel_temp); } }
-        public double KelvinCurrent { get { return current_kel_temp; } }
-        public double CelsiusMinimum { get { return temp_cel_min; } }
-        public double CelsiusMaximum { get { return temp_cel_max; } }
-        public double FahrenheitMinimum { get { return convertToFahrenheit(temp_cel_min); } }
-        public double FahrenheitMaximum { get { return convertToFahrenheit(temp_cel_max); } }
-        public double KelvinMinimum { get { return temp_kel_min; } }
-        public double KelvinMaximum { get { return temp_kel_max; } }
+        public double CelsiusCurrent { get; private set; }
+        public double FahrenheitCurrent { get; private set; }
+        public double KelvinCurrent
+        {
+            get
+            {
+                return current_kel_temp;
+            }
+            set
+            {
+                current_kel_temp = value;
+                CelsiusCurrent = convertToCelsius(value);
+                FahrenheitCurrent = convertToFahrenheit(CelsiusCurrent);
+            }
+        }
+        public double CelsiusMinimum { get; private set; }
+        public double CelsiusMaximum { get; private set; }
+        public double FahrenheitMinimum { get; private set; }
+        public double FahrenheitMaximum { get; private set; }
+        public double KelvinMinimum
+        {
+            get
+            {
+                return temp_kel_min;
+            }
+            set
+            {
+                temp_kel_min = value;
+                CelsiusMinimum = convertToCelsius(value);
+                FahrenheitMinimum = convertToFahrenheit(CelsiusMinimum);
+            }
+        }
+        public double KelvinMaximum
+        {
+            get
+            {
+                return temp_kel_max;
+            }
+            set
+            {
+                temp_kel_max = value;
+                CelsiusMaximum = convertToCelsius(value);
+                FahrenheitMaximum = convertToFahrenheit(CelsiusMinimum);
+            }
+        }
 
         public Temperature(double temp, double min, double max)
         {
-            current_kel_temp = temp;
-            temp_kel_min = min;
-            temp_kel_max = max;
-            current_cel_temp = convertToCelsius(current_kel_temp);
-            temp_cel_min = convertToCelsius(temp_kel_min);
-            temp_cel_max = convertToCelsius(temp_kel_max);
+            KelvinCurrent = temp;
+            KelvinMinimum= min;
+            KelvinMaximum = max;
         }
 
         private double convertToFahrenheit(double celsius)
