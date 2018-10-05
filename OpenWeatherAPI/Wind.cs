@@ -30,24 +30,20 @@ namespace OpenWeatherAPI
             Unknown
         }
 
-        private double speed;
-        private DirectionEnum direction;
-        private double degree;
-        private double gust;
-
-        public double SpeedMetersPerSecond { get { return speed; } }
-        public double SpeedFeetPerSecond { get { return speed * 3.28084; } }
-        public DirectionEnum Direction { get { return direction; } }
-        public double Degree { get { return degree; } }
-        public double Gust { get { return gust; } }
+        public readonly double SpeedMetersPerSecond;
+        public readonly double SpeedFeetPerSecond;
+        public readonly DirectionEnum Direction;
+        public readonly double Degree;
+        public readonly double Gust;
 
         public Wind(JToken windData)
         {
-            speed = double.Parse(windData.SelectToken("speed").ToString());
-            degree = double.Parse(windData.SelectToken("deg").ToString());
-            direction = assignDirection(degree);
+            SpeedMetersPerSecond = double.Parse(windData.SelectToken("speed").ToString());
+            SpeedFeetPerSecond = SpeedMetersPerSecond * 3.28084;
+            Degree = double.Parse(windData.SelectToken("deg").ToString());
+            Direction = assignDirection(Degree);
             if(windData.SelectToken("gust") != null)
-                gust = double.Parse(windData.SelectToken("gust").ToString());
+                Gust = double.Parse(windData.SelectToken("gust").ToString());
         }
 
         public string directionEnumToString(DirectionEnum dir)

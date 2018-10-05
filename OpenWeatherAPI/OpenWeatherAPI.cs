@@ -8,20 +8,20 @@ namespace OpenWeatherAPI
 {
     public class OpenWeatherAPI
     {
-        string openWeatherAPIKey;
+        private string openWeatherAPIKey;
 
         public OpenWeatherAPI(string apiKey)
         {
             openWeatherAPIKey = apiKey;
         }
 
-        public void updateAPIKey(string apiKey)
+        public void UpdateAPIKey(string apiKey)
         {
             openWeatherAPIKey = apiKey;
         }
 
         //Returns null if invalid request
-        public Query query(string queryStr)
+        public Query Query(string queryStr)
         {
             Query newQuery = new Query(openWeatherAPIKey, queryStr);
             if (newQuery.ValidRequest)

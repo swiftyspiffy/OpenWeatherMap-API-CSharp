@@ -9,13 +9,12 @@ namespace OpenWeatherAPI
 {
     public class Snow
     {
-        private double h3;
+        public readonly double H3;
 
-        public double H3 { get { return h3; } }
         public Snow(JToken snowData)
         {
             if (snowData.SelectToken("3h") != null)
-                h3 = double.Parse(snowData.SelectToken("3h").ToString());
+                H3 = double.Parse(snowData.SelectToken("3h").ToString());
         }
     }
 }
