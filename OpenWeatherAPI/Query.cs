@@ -53,7 +53,7 @@ namespace OpenWeatherAPI
                 if(jsonData.SelectToken("visibility") != null)
                     visibility = double.Parse(jsonData.SelectToken("visibility").ToString());
                 wind = new Wind(jsonData.SelectToken("wind"));
-                if(jsonData.SelectToken("raid") != null)
+                if(jsonData.SelectToken("rain") != null)
                     rain = new Rain(jsonData.SelectToken("rain"));
                 if (jsonData.SelectToken("snow") != null)
                     snow = new Snow(jsonData.SelectToken("snow"));
