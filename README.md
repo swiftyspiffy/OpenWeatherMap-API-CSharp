@@ -53,7 +53,6 @@ This library takes what openweathermap api returns in JSON, and converts it to C
 - Console.WriteLine(string.Format("The temperature in {0}, {1} is currently {2} °F", query.Name,query.Sys.Country, query.Main.Temperature.FahrenheitCurrent));
 
 ### Credits and Libraries Utilized
-- Costura.Fody / Fody - Takes the projects various DLL files and packages them all in the TwitchLib.dll file, combing and removing potential problems with not having all parts
 - Newtonsoft.Json - JSON parsing class.  Used to parse Twitch API calls.
 
 ### License
