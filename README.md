@@ -68,7 +68,7 @@ Console.WriteLine(string.Format("The temperature in {0}, {1} is currently {2} °
 This repository also has a sample project. Find it here: https://github.com/swiftyspiffy/OpenWeatherMap-API-CSharp/tree/master/OpenWeatherAPI%20Example
 
 ### Credits and Libraries Utilized
-- Newtonsoft.Json - JSON parsing class.  Used to parse Twitch API calls.
+- Newtonsoft.Json - JSON parsing class. 
 
 ### License
 The MIT License (MIT)

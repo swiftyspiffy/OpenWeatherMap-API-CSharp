@@ -1,20 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
+using System.Globalization;
 
 namespace OpenWeatherAPI
 {
-    public class Rain
-    {
-        public readonly double H3;
+	public class Rain
+	{
+		public Rain(JToken rainData)
+		{
+			if (rainData is null)
+				throw new System.ArgumentNullException(nameof(rainData));
 
-        public Rain(JToken rainData)
-        {
-            if (rainData.SelectToken("3h") != null)
-                H3 = double.Parse(rainData.SelectToken("3h").ToString());
-        }
-    }
+			if (rainData.SelectToken("3h") != null)
+				H3 = double.Parse(rainData.SelectToken("3h").ToString(), CultureInfo.InvariantCulture);
+		}
+
+		public double H3 { get; }
+	}
 }

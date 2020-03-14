@@ -1,68 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
+using System.Globalization;
 
 namespace OpenWeatherAPI
 {
-    public class Main
-    {
-        public readonly TemperatureObj Temperature;
-        public readonly double Pressure;
-        public readonly double Humdity;
-        public readonly double SeaLevelAtm;
-        public readonly double GroundLevelAtm;
+	public partial class Main
+	{
+		public TemperatureObj Temperature { get; }
 
-        public Main(JToken mainData)
-        {
-            Temperature = new TemperatureObj(double.Parse(mainData.SelectToken("temp").ToString()),
-                double.Parse(mainData.SelectToken("temp_min").ToString()), double.Parse(mainData.SelectToken("temp_max").ToString()));
-            Pressure = double.Parse(mainData.SelectToken("pressure").ToString());
-            Humdity = double.Parse(mainData.SelectToken("humidity").ToString());
-            if (mainData.SelectToken("sea_level") != null)
-                SeaLevelAtm = double.Parse(mainData.SelectToken("sea_level").ToString());
-            if (mainData.SelectToken("grnd_level") != null)
-                GroundLevelAtm = double.Parse(mainData.SelectToken("grnd_level").ToString());
-        }
+		public double Pressure { get; }
 
-        public class TemperatureObj
-        {
-            public readonly double CelsiusCurrent;
-            public readonly double FahrenheitCurrent;
-            public readonly double KelvinCurrent;
-            public readonly double CelsiusMinimum;
-            public readonly double CelsiusMaximum;
-            public readonly double FahrenheitMinimum;
-            public readonly double FahrenheitMaximum;
-            public readonly double KelvinMinimum;
-            public readonly double KelvinMaximum;
+		public double Humdity { get; }
 
-            public TemperatureObj(double temp, double min, double max)
-            {
-                KelvinCurrent = temp;
-                KelvinMaximum = max;
-                KelvinMinimum = min;
+		public double SeaLevelAtm { get; }
 
-                CelsiusCurrent = convertToCelsius(KelvinCurrent);
-                CelsiusMaximum = convertToCelsius(KelvinMaximum);
-                CelsiusMinimum = convertToCelsius(KelvinMinimum);
+		public double GroundLevelAtm { get; }
 
-                FahrenheitCurrent = convertToFahrenheit(CelsiusCurrent);
-                FahrenheitMaximum = convertToFahrenheit(CelsiusMaximum);
-                FahrenheitMinimum = convertToFahrenheit(CelsiusMinimum);
-            }
+		public Main(JToken mainData)
+		{
+			if (mainData is null)
+				throw new System.ArgumentNullException(nameof(mainData));
 
-            private double convertToFahrenheit(double celsius)
-            {
-                return Math.Round(((9.0 / 5.0) * celsius) + 32, 3);
-            }
+			Temperature = new TemperatureObj(
+								double.Parse(mainData.SelectToken("temp").ToString(), CultureInfo.InvariantCulture),
+								double.Parse(mainData.SelectToken("temp_min").ToString(), CultureInfo.InvariantCulture),
+								double.Parse(mainData.SelectToken("temp_max").ToString(), CultureInfo.InvariantCulture));
 
-            private double convertToCelsius(double kelvin)
-            {
-                return Math.Round(kelvin - 273.15, 3);
-            }
-        }
-    }
+			Pressure = double.Parse(mainData.SelectToken("pressure").ToString(), CultureInfo.InvariantCulture);
+			Humdity = double.Parse(mainData.SelectToken("humidity").ToString(), CultureInfo.InvariantCulture);
+			if (mainData.SelectToken("sea_level") != null)
+				SeaLevelAtm = double.Parse(mainData.SelectToken("sea_level").ToString(), CultureInfo.InvariantCulture);
+			if (mainData.SelectToken("grnd_level") != null)
+				GroundLevelAtm = double.Parse(mainData.SelectToken("grnd_level").ToString(), CultureInfo.InvariantCulture);
+		}
+	}
 }
