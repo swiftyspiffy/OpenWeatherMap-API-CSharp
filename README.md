@@ -48,14 +48,7 @@ This library takes what openweathermap api returns in JSON, and converts it to C
 - directionEnumToString(DirectionEnum dir) - Returns string value of wind direction on the basis of passed in DirectionEnum
 
 ### Installing
-1. Clone this code
-   - `git clone https://github.com/swiftyspiffy/OpenWeatherMap-API-CSharp.git`
-2. Open the code in VS
-3. Build the code base
-4. In your project that's using this code, reference the built DLL from the previous step:
-   - Project dropdown -> Add Reference -> Search for the created DLL(s) file.
-   - Generally, the path is something like: `/OpenWeatherMap-API-CSharp/bin/Debug/OpenWeatherAPI.dll`
-   - You may also need to reference the `Newtonsoft.Json.dll` if you aren't already using this library.
+Install the NuGet package https://www.nuget.org/packages/OpenWeatherAPI/
 
 ### Example Usage
 ```csharp
