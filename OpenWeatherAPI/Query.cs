@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System.Globalization;
 
@@ -7,8 +7,8 @@ namespace OpenWeatherAPI
 	public class Query
 	{
 		public bool ValidRequest { get; }
-		public Coord Coord { get; }
-		public List<Weather> Weathers { get; } = new List<Weather>();
+		public Coordinates Coordinates { get; }
+		public List<Weather> WeatherList { get; } = new List<Weather>();
 		public string Base { get; }
 		public Main Main { get; }
 		public double Visibility { get; }
@@ -30,9 +30,9 @@ namespace OpenWeatherAPI
 			if (jsonData.SelectToken("cod").ToString() == "200")
 			{
 				ValidRequest = true;
-				Coord = new Coord(jsonData.SelectToken("coord"));
+				Coordinates = new Coordinates(jsonData.SelectToken("coord"));
 				foreach (JToken weather in jsonData.SelectToken("weather"))
-					Weathers.Add(new Weather(weather));
+					WeatherList.Add(new Weather(weather));
 				Base = jsonData.SelectToken("base").ToString();
 				Main = new Main(jsonData.SelectToken("main"));
 				if (jsonData.SelectToken("visibility") != null)
