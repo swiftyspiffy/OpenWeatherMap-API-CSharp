@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace OpenWeatherAPI
 {
@@ -20,21 +20,21 @@ namespace OpenWeatherAPI
 			KelvinMaximum = max;
 			KelvinMinimum = min;
 
-			CelsiusCurrent = convertToCelsius(KelvinCurrent);
-			CelsiusMaximum = convertToCelsius(KelvinMaximum);
-			CelsiusMinimum = convertToCelsius(KelvinMinimum);
+			CelsiusCurrent = ConvertToCelsius(KelvinCurrent);
+			CelsiusMaximum = ConvertToCelsius(KelvinMaximum);
+			CelsiusMinimum = ConvertToCelsius(KelvinMinimum);
 
-			FahrenheitCurrent = convertToFahrenheit(CelsiusCurrent);
-			FahrenheitMaximum = convertToFahrenheit(CelsiusMaximum);
-			FahrenheitMinimum = convertToFahrenheit(CelsiusMinimum);
+			FahrenheitCurrent = ConvertToFahrenheit(CelsiusCurrent);
+			FahrenheitMaximum = ConvertToFahrenheit(CelsiusMaximum);
+			FahrenheitMinimum = ConvertToFahrenheit(CelsiusMinimum);
 		}
 
-		private double convertToFahrenheit(double celsius)
+		private static double ConvertToFahrenheit(double celsius)
 		{
 			return Math.Round(((9.0 / 5.0) * celsius) + 32, 3);
 		}
 
-		private double convertToCelsius(double kelvin)
+		private static double ConvertToCelsius(double kelvin)
 		{
 			return Math.Round(kelvin - 273.15, 3);
 		}
