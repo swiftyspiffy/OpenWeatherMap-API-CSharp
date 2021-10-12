@@ -5,7 +5,7 @@ using Xunit;
 namespace OpenWeatherAPI.Tests
 {
 	/// <summary>
-	/// Tests <see cref="API"/>
+	/// Tests <see cref="OpenWeatherApiClient"/>
 	/// </summary>
 	public class APITests
 	{
@@ -13,7 +13,7 @@ namespace OpenWeatherAPI.Tests
 		public void QueryTest_Success()
 		{
 			//Arrange
-			var api = new API("YOURAPIKEYHERE"); //No good solution here to have safe and valid OpenWeather API keys in a test
+			var api = new OpenWeatherApiClient("YOURAPIKEYHERE"); //No good solution here to have safe and valid OpenWeather API keys in a test
 
 			//Act
 			var actual = api.Query("Rotterdam,NL");
