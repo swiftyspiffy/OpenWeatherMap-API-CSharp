@@ -5,7 +5,7 @@ This library takes what openweathermap api returns in JSON, and converts it to C
 ### Returned Data
 - Clouds
   * All - Level of cloudiness (percentage of cloud cover?)
-- Coords
+- Coordinates
   * Longitude - Query location longitude
   * Latitude - Query location latitude
 - Main
@@ -59,8 +59,12 @@ This library takes what openweathermap api returns in JSON, and converts it to C
 
 ### Example Usage
 ```csharp
-OpenWeatherAPI.OpenWeatherAPI openWeatherAPI = new OpenWeatherAPI.OpenWeatherAPI("my open weather api key");
-OpenWeatherAPI.Query query = openWeatherAPI.query("city/location query");
+var openWeatherAPI = new OpenWeatherAPI.OpenWeatherApiClient("my open weather api key");
+// Use async version wherever possible
+var query = await openWeatherAPI.QueryAsync("city/location query");
+// or non-async version if needed for legacy code
+var query = openWeatherAPI.Query("city/location query");
+
 Console.WriteLine(string.Format("The temperature in {0}, {1} is currently {2} °F", query.Name,query.Sys.Country, query.Main.Temperature.FahrenheitCurrent));
 ```
 

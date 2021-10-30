@@ -4,7 +4,7 @@ using System.Globalization;
 
 namespace OpenWeatherAPI
 {
-	public class Query
+	public class QueryResponse
 	{
 		public bool ValidRequest { get; }
 		public Coordinates Coordinates { get; }
@@ -21,12 +21,9 @@ namespace OpenWeatherAPI
 		public string Name { get; }
 		public int Cod { get; }
 
-		public Query(string apiKey, string queryStr)
+		public QueryResponse(string jsonResponse)
 		{
-			JObject jsonData;
-			using (var client = new System.Net.WebClient())
-				jsonData = JObject.Parse(client.DownloadString($"http://api.openweathermap.org/data/2.5/weather?appid={apiKey}&q={queryStr}"));
-
+			var jsonData = JObject.Parse(jsonResponse);
 			if (jsonData.SelectToken("cod").ToString() == "200")
 			{
 				ValidRequest = true;
