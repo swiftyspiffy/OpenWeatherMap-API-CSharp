@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace OpenWeatherAPI_Example
 {
@@ -6,7 +6,7 @@ namespace OpenWeatherAPI_Example
     {
         static void Main(string[] args)
         {
-            var client = new OpenWeatherAPI.API("YOUR-API-KEY");
+            var client = new OpenWeatherAPI.OpenWeatherAPI("YOUR-API-KEY");
 
             Console.WriteLine("OpenWeatherAPI Example Application");
             Console.WriteLine();

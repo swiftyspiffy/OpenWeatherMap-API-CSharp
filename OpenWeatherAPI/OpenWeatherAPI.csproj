@@ -2,15 +2,18 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net462</TargetFrameworks>
-    <Copyright>Copyright © 2016</Copyright>
+    <Copyright>Cole © 2021</Copyright>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageReleaseNotes>Ported to .Net standard 2.0</PackageReleaseNotes>
-    <Version>1.0.1</Version>
+    <PackageReleaseNotes>Refactor courtesy of brendangooden.</PackageReleaseNotes>
+    <Version>1.0.2</Version>
     <Authors>OpenWeatherAPI, swiftyspiffy, Atrejoe</Authors>
     <Product>.Net client for OpenWeatherAPI</Product>
     <PackageProjectUrl>https://github.com/swiftyspiffy/OpenWeatherMap-API-CSharp</PackageProjectUrl>
     <RepositoryUrl>https://github.com/swiftyspiffy/OpenWeatherMap-API-CSharp</RepositoryUrl>
     <PackageTags>OpenWeatherAPI weather</PackageTags>
+    <AssemblyVersion>1.0.2.0</AssemblyVersion>
+    <FileVersion>1.0.2.0</FileVersion>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
