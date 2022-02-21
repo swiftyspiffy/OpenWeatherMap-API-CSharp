@@ -20,6 +20,7 @@ namespace OpenWeatherAPI
 		public int ID { get; }
 		public string Name { get; }
 		public int Cod { get; }
+		public int Timezone { get; }
 
 		public QueryResponse(string jsonResponse)
 		{
@@ -44,6 +45,7 @@ namespace OpenWeatherAPI
 				ID = int.Parse(jsonData.SelectToken("id").ToString(), CultureInfo.InvariantCulture);
 				Name = jsonData.SelectToken("name").ToString();
 				Cod = int.Parse(jsonData.SelectToken("cod").ToString(), CultureInfo.InvariantCulture);
+				Timezone = int.Parse(jsonData.SelectToken("timezone").ToString(), CultureInfo.InvariantCulture);
 			}
 			else
 			{
