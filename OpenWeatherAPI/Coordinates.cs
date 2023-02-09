@@ -14,8 +14,8 @@ namespace OpenWeatherAPI
 			if (coordinateData is null)
 				throw new System.ArgumentNullException(nameof(coordinateData));
 
-			Longitude = double.Parse(coordinateData.SelectToken("lon").ToString(), CultureInfo.InvariantCulture);
-			Latitude = double.Parse(coordinateData.SelectToken("lat").ToString(), CultureInfo.InvariantCulture);
+			Longitude = double.Parse(coordinateData.SelectToken("lon").ToString(), CultureInfo.CurrentCulture);
+			Latitude = double.Parse(coordinateData.SelectToken("lat").ToString(), CultureInfo.CurrentCulture);
 		}
 	}
 }
