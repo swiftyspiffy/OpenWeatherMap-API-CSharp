@@ -8,16 +8,25 @@ namespace OpenWeatherAPI
 	{
 		private readonly string _apiKey;
 		private readonly HttpClient _httpClient;
-		public OpenWeatherApiClient(string apiKey)
+		private readonly bool _useHttps;
+		public OpenWeatherApiClient(string apiKey, bool useHttps = false)
 		{
 			_apiKey = apiKey;
 			_httpClient = new HttpClient();
+			_useHttps = useHttps;
 		}
 
-		private Uri GenerateRequestUrl(string queryString) => new Uri($"http://api.openweathermap.org/data/2.5/weather?appid={_apiKey}&q={queryString}");
+		private Uri GenerateRequestUrl(string queryString)
+		{
+			string scheme = "http";
+			if (_useHttps)
+				scheme = "https";
+
+			return new Uri($"{scheme}://api.openweathermap.org/data/2.5/weather?appid={_apiKey}&q={queryString}");
+		}
 
 		/// <summary>
-		/// 
+		///
 		/// </summary>
 		/// <param name="queryString"></param>
 		/// <returns>Returns null if the query is invalid.</returns>
