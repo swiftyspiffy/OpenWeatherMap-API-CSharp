@@ -20,24 +20,23 @@ namespace OpenWeatherAPI
 		{
 			var geo = await Geolocate(queryString).ConfigureAwait(false);
 
-			return new Uri($"http://api.openweathermap.org/data/2.5/weather?appid={_apiKey}&lat={geo.Lat}&lon={geo.Lon}");
+			string scheme = "http";
+			if (_useHttps)
+				scheme = "https";
+			return new Uri($"{scheme}://api.openweathermap.org/data/2.5/weather?appid={_apiKey}&lat={geo.Lat}&lon={geo.Lon}");
 		}
 
 		public async Task<GeoResponse> Geolocate(string queryString)
-		{
-			var jsonResponse = await _httpClient
-				.GetStringAsync(
-					new Uri($"http://api.openweathermap.org/geo/1.0/direct?q={queryString}&limit={1}&appid={_apiKey}"))
-				.ConfigureAwait(false);
-			return new GeoResponse(jsonResponse);
-		}
-		private Uri GenerateRequestUrl(string queryString)
 		{
 			string scheme = "http";
 			if (_useHttps)
 				scheme = "https";
 
-			return new Uri($"{scheme}://api.openweathermap.org/data/2.5/weather?appid={_apiKey}&q={queryString}");
+			var jsonResponse = await _httpClient
+				.GetStringAsync(
+					new Uri($"{scheme}://api.openweathermap.org/geo/1.0/direct?q={queryString}&limit={1}&appid={_apiKey}"))
+				.ConfigureAwait(false);
+			return new GeoResponse(jsonResponse);
 		}
 
 		/// <summary>
