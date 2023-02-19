@@ -42,12 +42,12 @@ namespace OpenWeatherAPI
 				throw new System.ArgumentNullException(nameof(windData));
 
 
-			SpeedMetersPerSecond = double.Parse(windData.SelectToken("speed").ToString(), CultureInfo.InvariantCulture);
+			SpeedMetersPerSecond = double.Parse(windData.SelectToken("speed").ToString(), CultureInfo.CurrentCulture);
 			SpeedFeetPerSecond = SpeedMetersPerSecond * 3.28084;
-			Degree = double.Parse(windData.SelectToken("deg").ToString(), CultureInfo.InvariantCulture);
+			Degree = double.Parse(windData.SelectToken("deg").ToString(), CultureInfo.CurrentCulture);
 			Direction = assignDirection(Degree);
 			if (windData.SelectToken("gust") != null)
-				Gust = double.Parse(windData.SelectToken("gust").ToString(), CultureInfo.InvariantCulture);
+				Gust = double.Parse(windData.SelectToken("gust").ToString(), CultureInfo.CurrentCulture);
 		}
 
 		public static string DirectionEnumToString(DirectionEnum dir)
