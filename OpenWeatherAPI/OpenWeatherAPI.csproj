@@ -1,19 +1,20 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net462</TargetFrameworks>
-    <Copyright>Cole © 2021</Copyright>
+    <TargetFrameworks>netstandard2.0;net462;net5.0</TargetFrameworks>
+    <Copyright>Cole © 2022</Copyright>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageReleaseNotes>Refactor courtesy of brendangooden.</PackageReleaseNotes>
-    <Version>1.0.2</Version>
+    <PackageReleaseNotes>Added .NET 5.0 support</PackageReleaseNotes>
+    <Version>1.0.2.1</Version>
     <Authors>OpenWeatherAPI, swiftyspiffy, Atrejoe</Authors>
     <Product>.Net client for OpenWeatherAPI</Product>
-    <PackageProjectUrl>https://github.com/swiftyspiffy/OpenWeatherMap-API-CSharp</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/swiftyspiffy/OpenWeatherMap-API-CSharp</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/iminet/OpenWeatherMap-API-CSharp</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/iminet/OpenWeatherMap-API-CSharp</RepositoryUrl>
     <PackageTags>OpenWeatherAPI weather</PackageTags>
-    <AssemblyVersion>1.0.2.0</AssemblyVersion>
-    <FileVersion>1.0.2.0</FileVersion>
+    <AssemblyVersion>1.0.2.1</AssemblyVersion>
+    <FileVersion>1.0.2.1</FileVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <NeutralLanguage>en</NeutralLanguage>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -41,5 +42,18 @@
   </ItemGroup>
   <ItemGroup Condition=" '$(TargetFramework)' == 'net462'">
     <Reference Include="System.Net.Http" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

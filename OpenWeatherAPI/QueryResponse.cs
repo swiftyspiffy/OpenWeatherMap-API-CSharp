@@ -46,6 +46,7 @@ namespace OpenWeatherAPI
 				Name = jsonData.SelectToken("name").ToString();
 				Cod = int.Parse(jsonData.SelectToken("cod").ToString(), CultureInfo.InvariantCulture);
 				Timezone = int.Parse(jsonData.SelectToken("timezone").ToString(), CultureInfo.InvariantCulture);
+				Visibility = int.Parse(jsonData.SelectToken("visibility").ToString(), CultureInfo.CurrentCulture);
 			}
 			else
 			{
