@@ -4,15 +4,18 @@
     <TargetFrameworks>netstandard2.0;net462;net5.0</TargetFrameworks>
     <Copyright>Cole © 2022</Copyright>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageReleaseNotes>Added .NET 5.0 support</PackageReleaseNotes>
-    <Version>1.0.2.1</Version>
-    <Authors>OpenWeatherAPI, swiftyspiffy, Atrejoe</Authors>
+    <PackageReleaseNotes>Added package icon</PackageReleaseNotes>
+    <Version>1.0.2.2</Version>
+    <Authors>OpenWeatherAPI, swiftyspiffy, Atrejoe, iminet</Authors>
     <Product>.Net client for OpenWeatherAPI</Product>
     <PackageProjectUrl>https://github.com/iminet/OpenWeatherMap-API-CSharp</PackageProjectUrl>
     <RepositoryUrl>https://github.com/iminet/OpenWeatherMap-API-CSharp</RepositoryUrl>
     <PackageTags>OpenWeatherAPI weather</PackageTags>
-    <AssemblyVersion>1.0.2.1</AssemblyVersion>
-    <FileVersion>1.0.2.1</FileVersion>
+    <PackageReadmeFile>Readme.md</PackageReadmeFile>
+    <PackageIcon>openweathericon.png</PackageIcon>
+    <PackageId>Iminet.OpenWeatherMap</PackageId>
+    <AssemblyVersion>1.0.2.2</AssemblyVersion>
+    <FileVersion>1.0.2.2</FileVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <NeutralLanguage>en</NeutralLanguage>
   </PropertyGroup>
@@ -31,6 +34,8 @@
 
   <ItemGroup>
     <None Include="..\.editorconfig" Link=".editorconfig" />
+    <None Include="..\Readme.md" Pack="true" PackagePath="\" />
+    <None Include="Resources\openweathericon.png" Pack="true" PackagePath="\" />
   </ItemGroup>
 
   <ItemGroup>
